@@ -1,0 +1,19 @@
+[project]
+name = "csdn-analytics-backend"
+version = "2.0.0"
+description = "CSDN Analytics 后端服务"
+requires-python = ">=3.8"
+authors = [
+    { name = "南宫乘风", email = "1794748404@qq.com" }
+]
+dependencies = [
+    "Flask==3.0.0",
+    "Flask-SQLAlchemy==3.1.1",
+    "Flask-Cors==4.0.0",
+    "python-dotenv==1.0.0",
+    "beautifulsoup4==4.12.3",
+    "lxml==5.1.0",
+    "requests==2.32.3",
+    "pymysql==1.1.0",
+    "werkzeug==3.0.1",
+]
