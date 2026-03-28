@@ -65,7 +65,7 @@ const updateChart = () => {
       textStyle: {
         color: '#1e293b',
       },
-      boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+      extraCssText: 'box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);',
     },
     dataset: {
       dimensions: ['product', ...dimensions],

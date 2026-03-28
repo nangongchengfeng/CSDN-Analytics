@@ -191,19 +191,19 @@ const handleYearChange = async (year: string) => {
 // 处理季度图表点击
 const handleQuarterClick = async (params: { year: string; quarter: string }) => {
   currentFilter.value = { year: params.year, quarter: params.quarter }
-  await fetchArticles(currentFilter.value)
+  await fetchArticles({ year: params.year, quarter: params.quarter })
 }
 
 // 处理分类图表点击
 const handleCategoryClick = async (params: { name: string }) => {
   currentFilter.value = { type: params.name }
-  await fetchArticles(currentFilter.value)
+  await fetchArticles({ type: params.name })
 }
 
 // 处理阅读量图表点击
 const handleReadClick = async (params: { name: string }) => {
   currentFilter.value = { type: params.name }
-  await fetchArticles(currentFilter.value)
+  await fetchArticles({ type: params.name })
 }
 
 // 处理热力图点击

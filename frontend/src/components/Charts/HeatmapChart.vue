@@ -1,7 +1,7 @@
 <template>
   <div class="chart-container">
     <div class="chart-header">
-      <h3 class="chart-title" ref="titleRef">
+      <h3 class="chart-title">
         {{ selectedYear }} 年 写作发布热力图
       </h3>
       <div class="year-select-wrapper">
@@ -40,7 +40,6 @@ const emit = defineEmits<{
 }>()
 
 const chartRef = ref<HTMLElement | null>(null)
-const titleRef = ref<HTMLElement | null>(null)
 const selectedYear = ref(props.selectedYear)
 let chartInstance: echarts.ECharts | null = null
 
@@ -91,9 +90,8 @@ const updateChart = () => {
       textStyle: {
         color: '#1e293b',
       },
-      boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+      extraCssText: 'box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);',
       formatter: (params: any) => {
-        const week = params.value[0] + 1
         const count = params.value[2]
         return `${props.data.xAxis[params.value[0]]}<br>星期: ${props.data.yAxis[params.value[1]]}<br>文章数: ${count}`
       },
@@ -107,13 +105,16 @@ const updateChart = () => {
     xAxis: {
       type: 'category',
       data: props.data.xAxis,
-      splitArea: {
+      splitLine: {
         show: true,
         lineStyle: {
           width: 1,
           type: 'dashed',
           color: 'rgba(226, 232, 240, 0.6)',
         },
+      },
+      splitArea: {
+        show: true,
         areaStyle: {
           color: ['rgba(248, 250, 252, 0.5)', 'rgba(255, 255, 255, 0.3)'],
         },
@@ -133,13 +134,16 @@ const updateChart = () => {
     yAxis: {
       type: 'category',
       data: props.data.yAxis,
-      splitArea: {
+      splitLine: {
         show: true,
         lineStyle: {
           width: 1,
           type: 'dashed',
           color: 'rgba(226, 232, 240, 0.6)',
         },
+      },
+      splitArea: {
+        show: true,
         areaStyle: {
           color: ['rgba(248, 250, 252, 0.5)', 'rgba(255, 255, 255, 0.3)'],
         },
