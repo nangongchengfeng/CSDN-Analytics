@@ -26,9 +26,11 @@ defineProps<Props>()
 .stats-grid {
   display: flex;
   align-items: center;
-  padding: 0 16px;
-  overflow-x: auto;
-  white-space: nowrap;
+  justify-content: center;
+  gap: 10px;
+  padding: 6px 12px;
   height: 100%;
+  flex-wrap: nowrap;
+  min-width: 0;
 }
 </style>

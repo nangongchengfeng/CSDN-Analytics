@@ -100,10 +100,23 @@ const handleClear = () => {
 }
 
 .chart-title {
-  color: var(--accent-color);
-  font-weight: 600;
-  font-size: 1rem;
+  color: #0f172a;
+  font-weight: 700;
+  font-size: 1.15rem;
   margin: 0;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.chart-title::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 20px;
+  background: linear-gradient(135deg, var(--accent-color), #60a5fa);
+  border-radius: 2px;
 }
 
 .filter-info {
@@ -118,24 +131,30 @@ const handleClear = () => {
 }
 
 .clear-btn {
-  background-color: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(226, 232, 240, 0.8);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.9));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.9);
   color: var(--accent-color);
-  padding: 6px 16px;
-  border-radius: 10px;
+  padding: 8px 18px;
+  border-radius: 12px;
   font-size: 0.85rem;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04),
+              0 2px 6px rgba(15, 23, 42, 0.02),
+              0 1px 0 rgba(255, 255, 255, 0.9) inset;
 }
 
 .clear-btn:hover {
-  background-color: var(--accent-color);
+  background: linear-gradient(135deg, var(--accent-color), #60a5fa);
   color: white;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.25),
+              0 4px 12px rgba(59, 130, 246, 0.15),
+              0 1px 0 rgba(255, 255, 255, 0.2) inset;
+  border-color: transparent;
 }
 
 .article-list {

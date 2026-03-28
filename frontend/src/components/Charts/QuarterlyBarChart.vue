@@ -144,10 +144,23 @@ window.addEventListener('resize', () => {
 }
 
 .chart-title {
-  color: var(--accent-color);
-  font-weight: 600;
-  margin-bottom: 12px;
-  font-size: 1rem;
+  color: #0f172a;
+  font-weight: 700;
+  margin-bottom: 14px;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.chart-title::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 20px;
+  background: linear-gradient(135deg, var(--accent-color), #60a5fa);
+  border-radius: 2px;
 }
 
 .chart {

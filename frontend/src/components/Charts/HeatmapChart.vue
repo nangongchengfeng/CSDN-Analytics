@@ -1,18 +1,23 @@
 <template>
   <div class="chart-container">
-    <h3 class="chart-title" ref="titleRef">
-      {{ selectedYear }} 年 写作发布热力图
-    </h3>
+    <div class="chart-header">
+      <h3 class="chart-title" ref="titleRef">
+        {{ selectedYear }} 年 写作发布热力图
+      </h3>
+      <div class="year-select-wrapper">
+        <span class="year-label">选择年份:</span>
+        <select class="year-select" v-model="selectedYear" @change="handleYearChange">
+          <option
+            v-for="year in years"
+            :key="year"
+            :value="year"
+          >
+            {{ year }}年
+          </option>
+        </select>
+      </div>
+    </div>
     <div ref="chartRef" class="chart"></div>
-    <select class="year-select" v-model="selectedYear" @change="handleYearChange">
-      <option
-        v-for="year in years"
-        :key="year"
-        :value="year"
-      >
-        {{ year }}年
-      </option>
-    </select>
   </div>
 </template>
 
@@ -213,39 +218,92 @@ window.addEventListener('resize', () => {
   position: relative;
 }
 
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  gap: 16px;
+}
+
 .chart-title {
-  color: var(--accent-color);
+  color: #0f172a;
+  font-weight: 700;
+  margin: 0;
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+}
+
+.chart-title::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 20px;
+  background: linear-gradient(135deg, var(--accent-color), #60a5fa);
+  border-radius: 2px;
+}
+
+.year-select-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.year-label {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.year-select {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.9));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 12px;
+  padding: 10px 16px;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.06),
+              0 2px 8px rgba(15, 23, 42, 0.04),
+              0 1px 0 rgba(255, 255, 255, 0.9) inset;
+  z-index: 10;
+  color: #1e293b;
+  font-size: 0.9rem;
   font-weight: 600;
-  margin-bottom: 12px;
-  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  outline: none;
+  min-width: 100px;
+}
+
+.year-select:hover {
+  border-color: var(--accent-color);
+  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.15),
+              0 4px 12px rgba(15, 23, 42, 0.08),
+              0 1px 0 rgba(255, 255, 255, 0.9) inset;
+  transform: translateY(-1px);
+}
+
+.year-select:focus {
+  border-color: var(--accent-color);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1),
+              0 10px 30px rgba(59, 130, 246, 0.15);
+}
+
+.year-select option {
+  background: #ffffff;
+  color: #1e293b;
+  padding: 8px 16px;
+  font-weight: 500;
 }
 
 .chart {
   flex: 1;
   min-height: 200px;
-}
-
-.year-select {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background-color: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(226, 232, 240, 0.8);
-  border-radius: 10px;
-  padding: 8px 14px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-  z-index: 10;
-  color: #1e293b;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s;
-}
-
-.year-select:hover {
-  border-color: var(--accent-color);
-  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.15);
 }
 </style>

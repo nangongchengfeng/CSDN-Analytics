@@ -229,8 +229,8 @@ const handleClearFilter = async () => {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  padding: 15px;
-  gap: 15px;
+  padding: 20px;
+  gap: 20px;
 }
 
 .top-section {
@@ -241,13 +241,13 @@ const handleClearFilter = async () => {
 
 .top-content {
   display: flex;
-  gap: 20px;
+  gap: 24px;
   height: 100%;
   align-items: center;
 }
 
 .top-content > *:first-child {
-  flex: 0 0 25%;
+  flex: 0 0 30%;
 }
 
 .top-content > *:last-child {
@@ -258,13 +258,13 @@ const handleClearFilter = async () => {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
   min-height: 0;
 }
 
 .chart-row {
   display: flex;
-  gap: 15px;
+  gap: 20px;
   flex: 1;
   min-height: 40%;
 }
@@ -276,6 +276,6 @@ const handleClearFilter = async () => {
 
 :deep(.window-content) {
   height: 100%;
-  padding: 16px;
+  padding: 18px;
 }
 </style>
