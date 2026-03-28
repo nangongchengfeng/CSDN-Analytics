@@ -47,23 +47,25 @@ const updateChart = () => {
     ...item,
   }))
 
-  const colorList = ['#3b82f6', '#10b981', '#8b5cf6', '#f59e0b', '#ec4899']
+  const colorList = ['#60a5fa', '#34d399', '#a78bfa', '#fbbf24', '#f472b6']
 
   const option: EChartsOption = {
     backgroundColor: 'transparent',
     color: colorList,
     legend: {
       textStyle: {
-        color: '#6b7280',
+        color: '#64748b',
       },
     },
     tooltip: {
       trigger: 'axis',
-      backgroundColor: 'rgba(255, 255, 255, 0.98)',
-      borderColor: '#e5e7eb',
+      backgroundColor: 'rgba(255, 255, 255, 0.95)',
+      borderColor: 'rgba(226, 232, 240, 0.8)',
+      borderWidth: 1,
       textStyle: {
-        color: '#1a1a1a',
+        color: '#1e293b',
       },
+      boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
     },
     dataset: {
       dimensions: ['product', ...dimensions],
@@ -72,36 +74,36 @@ const updateChart = () => {
     xAxis: {
       type: 'category',
       axisLabel: {
-        color: '#6b7280',
+        color: '#64748b',
       },
       axisLine: {
         lineStyle: {
-          color: '#e5e7eb',
+          color: 'rgba(226, 232, 240, 0.6)',
         },
       },
       axisTick: {
         lineStyle: {
-          color: '#e5e7eb',
+          color: 'rgba(226, 232, 240, 0.6)',
         },
       },
     },
     yAxis: {
       axisLabel: {
-        color: '#6b7280',
+        color: '#64748b',
       },
       axisLine: {
         lineStyle: {
-          color: '#e5e7eb',
+          color: 'rgba(226, 232, 240, 0.6)',
         },
       },
       axisTick: {
         lineStyle: {
-          color: '#e5e7eb',
+          color: 'rgba(226, 232, 240, 0.6)',
         },
       },
       splitLine: {
         lineStyle: {
-          color: '#f3f4f6',
+          color: 'rgba(241, 245, 249, 0.8)',
           type: 'dashed',
         },
       },
@@ -110,7 +112,7 @@ const updateChart = () => {
       type: 'bar',
       name: dim,
       itemStyle: {
-        borderRadius: [4, 4, 0, 0],
+        borderRadius: [6, 6, 0, 0],
         color: colorList[index % colorList.length],
       },
     })),

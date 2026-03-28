@@ -6,32 +6,32 @@
 }
 
 :root {
-  /* 背景色 - 浅灰渐变 */
-  --bg-primary: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  --bg-secondary: #ffffff;
-  --bg-card: #ffffff;
+  /* 背景色 - 极浅玻璃态 */
+  --bg-primary: #f8fafc;
+  --bg-secondary: rgba(255, 255, 255, 0.7);
+  --bg-card: rgba(255, 255, 255, 0.85);
 
   /* 文字色 - 深灰系 */
-  --text-primary: #1a1a1a;
-  --text-secondary: #6b7280;
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
 
   /* 主色调 - 清爽蓝色 */
   --accent-color: #3b82f6;
   --accent-hover: #2563eb;
 
   /* 边框 - 极浅灰 */
-  --border-color: #e5e7eb;
+  --border-color: rgba(226, 232, 240, 0.8);
   --border-radius: 16px;
 
   /* 阴影 - 柔和 */
-  --shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-  --shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.1);
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.1);
 }
 
 body, html {
   height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  background: var(--bg-primary);
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
   color: var(--text-primary);
   overflow: hidden;
 }
@@ -48,14 +48,14 @@ body, html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #c1c1c1;
+  background: rgba(148, 163, 184, 0.5);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #a1a1a1;
+  background: rgba(100, 116, 139, 0.6);
 }

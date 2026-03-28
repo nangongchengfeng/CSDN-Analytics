@@ -118,19 +118,24 @@ const handleClear = () => {
 }
 
 .clear-btn {
-  background-color: #f9fafb;
-  border: 1px solid var(--border-color);
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
   color: var(--accent-color);
-  padding: 4px 12px;
-  border-radius: 6px;
-  font-size: 0.8rem;
+  padding: 6px 16px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  font-weight: 500;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .clear-btn:hover {
   background-color: var(--accent-color);
   color: white;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
 }
 
 .article-list {
@@ -143,26 +148,26 @@ const handleClear = () => {
   border-collapse: collapse;
   text-align: left;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .article-table th {
-  padding: 8px;
-  border-bottom: 2px solid var(--border-color);
-  background-color: #f9fafb;
+  padding: 10px 12px;
+  border-bottom: 2px solid rgba(226, 232, 240, 0.8);
+  background-color: rgba(248, 250, 252, 0.6);
   color: var(--text-secondary);
-  font-size: 14px;
-  font-weight: bold;
+  font-size: 13px;
+  font-weight: 600;
 }
 
 .article-table td {
-  padding: 8px;
-  border-bottom: 1px solid var(--border-color);
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.6);
   color: var(--text-primary);
 }
 
 .article-table tr:hover {
-  background-color: #f9fafb;
+  background-color: rgba(248, 250, 252, 0.8);
 }
 
 .article-table a {
@@ -170,10 +175,12 @@ const handleClear = () => {
   color: var(--accent-color);
   font-size: 14px;
   font-weight: 500;
+  transition: color 0.2s;
 }
 
 .article-table a:hover {
   text-decoration: underline;
+  color: #2563eb;
 }
 
 .no-data {

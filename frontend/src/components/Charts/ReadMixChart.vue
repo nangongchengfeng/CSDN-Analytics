@@ -43,22 +43,24 @@ const updateChart = () => {
 
   const option: EChartsOption = {
     backgroundColor: 'transparent',
-    color: ['#3b82f6', '#f59e0b'],
+    color: ['#60a5fa', '#fbbf24'],
     tooltip: {
       trigger: 'axis',
       axisPointer: {
         type: 'shadow',
       },
-      backgroundColor: 'rgba(255, 255, 255, 0.98)',
-      borderColor: '#e5e7eb',
+      backgroundColor: 'rgba(255, 255, 255, 0.95)',
+      borderColor: 'rgba(226, 232, 240, 0.8)',
+      borderWidth: 1,
       textStyle: {
-        color: '#1a1a1a',
+        color: '#1e293b',
       },
+      boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
     },
     legend: {
       data: ['文章数', '阅读量'],
       textStyle: {
-        color: '#6b7280',
+        color: '#64748b',
       },
     },
     grid: {
@@ -75,7 +77,7 @@ const updateChart = () => {
         axisLabel: {
           rotate: 90,
           interval: 0,
-          color: '#6b7280',
+          color: '#64748b',
           formatter: (value: string) => {
             return value.length > 15 ? value.substring(0, 15) + '\n' + value.substring(10) : value
           },
@@ -83,7 +85,7 @@ const updateChart = () => {
         },
         axisLine: {
           lineStyle: {
-            color: '#e5e7eb',
+            color: 'rgba(226, 232, 240, 0.6)',
           },
         },
         data: props.data.labels,
@@ -97,17 +99,17 @@ const updateChart = () => {
         axisLine: {
           show: true,
           lineStyle: {
-            color: '#3b82f6',
+            color: '#60a5fa',
           },
         },
         axisLabel: {
           formatter: '{value}',
-          color: '#6b7280',
+          color: '#64748b',
         },
         splitLine: {
           lineStyle: {
             type: 'dashed',
-            color: '#f3f4f6',
+            color: 'rgba(241, 245, 249, 0.8)',
           },
         },
       },
@@ -119,12 +121,12 @@ const updateChart = () => {
         axisLine: {
           show: true,
           lineStyle: {
-            color: '#f59e0b',
+            color: '#fbbf24',
           },
         },
         axisLabel: {
           formatter: '{value}',
-          color: '#6b7280',
+          color: '#64748b',
         },
         splitLine: {
           show: false,
@@ -139,8 +141,8 @@ const updateChart = () => {
         yAxisIndex: 0,
         barWidth: '40%',
         itemStyle: {
-          color: '#3b82f6',
-          barBorderRadius: [4, 4, 0, 0],
+          color: '#60a5fa',
+          borderRadius: [6, 6, 0, 0],
         },
       },
       {
@@ -150,11 +152,11 @@ const updateChart = () => {
         yAxisIndex: 1,
         smooth: true,
         lineStyle: {
-          color: '#f59e0b',
+          color: '#fbbf24',
           width: 3,
         },
         itemStyle: {
-          color: '#f59e0b',
+          color: '#fbbf24',
         },
       },
     ],

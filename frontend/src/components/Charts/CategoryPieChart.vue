@@ -46,7 +46,7 @@ const updateChart = () => {
     name: item.name,
   }))
 
-  const colorList = ['#3b82f6', '#10b981', '#8b5cf6', '#f59e0b', '#ec4899', '#06b6d4', '#f97316']
+  const colorList = ['#60a5fa', '#34d399', '#a78bfa', '#fbbf24', '#f472b6', '#22d3d1', '#fb923c']
 
   const option: EChartsOption = {
     backgroundColor: 'transparent',
@@ -57,11 +57,13 @@ const updateChart = () => {
     tooltip: {
       trigger: 'item',
       formatter: '{a} <br/>{b}: {c} ({d}%)',
-      backgroundColor: 'rgba(255, 255, 255, 0.98)',
-      borderColor: '#e5e7eb',
+      backgroundColor: 'rgba(255, 255, 255, 0.95)',
+      borderColor: 'rgba(226, 232, 240, 0.8)',
+      borderWidth: 1,
       textStyle: {
-        color: '#1a1a1a',
+        color: '#1e293b',
       },
+      boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
     },
     legend: {
       show: false,
@@ -70,24 +72,29 @@ const updateChart = () => {
       {
         name: '分类统计',
         type: 'pie',
-        radius: ['30%', '70%'],
+        radius: ['35%', '68%'],
         data: chartData,
         label: {
           show: true,
           position: 'outside',
           formatter: '{b}: {d}%',
-          color: '#6b7280',
+          color: '#64748b',
         },
         labelLine: {
           show: true,
           lineStyle: {
-            color: '#e5e7eb',
+            color: 'rgba(226, 232, 240, 0.8)',
           },
+        },
+        itemStyle: {
+          borderRadius: 4,
+          borderColor: 'rgba(255, 255, 255, 0.8)',
+          borderWidth: 2,
         },
         emphasis: {
           itemStyle: {
-            shadowBlur: 10,
-            shadowColor: 'rgba(0, 0, 0, 0.15)',
+            shadowBlur: 20,
+            shadowColor: 'rgba(0, 0, 0, 0.12)',
           },
         },
       },

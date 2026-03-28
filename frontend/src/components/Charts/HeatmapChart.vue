@@ -69,22 +69,24 @@ const updateChart = () => {
   if (!chartInstance || !props.data.data) return
 
   const colorScale = [
-    [0, '#f3f4f6'],
-    [0.2, '#dbeafe'],
-    [0.4, '#93c5fd'],
-    [0.6, '#3b82f6'],
-    [1, '#1d4ed8'],
+    [0, '#f8fafc'],
+    [0.2, '#e0f2fe'],
+    [0.4, '#7dd3fc'],
+    [0.6, '#38bdf8'],
+    [1, '#0ea5e9'],
   ]
 
   const option: EChartsOption = {
     backgroundColor: 'transparent',
     tooltip: {
       position: 'top',
-      backgroundColor: 'rgba(255, 255, 255, 0.98)',
-      borderColor: '#e5e7eb',
+      backgroundColor: 'rgba(255, 255, 255, 0.95)',
+      borderColor: 'rgba(226, 232, 240, 0.8)',
+      borderWidth: 1,
       textStyle: {
-        color: '#1a1a1a',
+        color: '#1e293b',
       },
+      boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
       formatter: (params: any) => {
         const week = params.value[0] + 1
         const count = params.value[2]
@@ -105,21 +107,21 @@ const updateChart = () => {
         lineStyle: {
           width: 1,
           type: 'dashed',
-          color: '#e5e7eb',
+          color: 'rgba(226, 232, 240, 0.6)',
         },
         areaStyle: {
-          color: ['#f9fafb', '#ffffff'],
+          color: ['rgba(248, 250, 252, 0.5)', 'rgba(255, 255, 255, 0.3)'],
         },
       },
       axisLabel: {
         fontSize: 14,
-        color: '#6b7280',
+        color: '#64748b',
         rotate: 45,
       },
       axisLine: {
         show: true,
         lineStyle: {
-          color: '#e5e7eb',
+          color: 'rgba(226, 232, 240, 0.6)',
         },
       },
     },
@@ -131,20 +133,20 @@ const updateChart = () => {
         lineStyle: {
           width: 1,
           type: 'dashed',
-          color: '#e5e7eb',
+          color: 'rgba(226, 232, 240, 0.6)',
         },
         areaStyle: {
-          color: ['#f9fafb', '#ffffff'],
+          color: ['rgba(248, 250, 252, 0.5)', 'rgba(255, 255, 255, 0.3)'],
         },
       },
       axisLabel: {
         fontSize: 14,
-        color: '#6b7280',
+        color: '#64748b',
       },
       axisLine: {
         show: true,
         lineStyle: {
-          color: '#e5e7eb',
+          color: 'rgba(226, 232, 240, 0.6)',
         },
       },
     },
@@ -162,7 +164,7 @@ const updateChart = () => {
       },
       textStyle: {
         fontSize: 12,
-        color: '#6b7280',
+        color: '#64748b',
       },
     },
     series: [
@@ -173,10 +175,13 @@ const updateChart = () => {
         label: {
           show: false,
         },
+        itemStyle: {
+          borderRadius: 2,
+        },
         emphasis: {
           itemStyle: {
-            shadowBlur: 10,
-            shadowColor: 'rgba(0, 0, 0, 0.15)',
+            shadowBlur: 15,
+            shadowColor: 'rgba(0, 0, 0, 0.12)',
           },
         },
       },
@@ -224,18 +229,23 @@ window.addEventListener('resize', () => {
   position: absolute;
   top: 15px;
   right: 15px;
-  background-color: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  padding: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  background-color: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  border-radius: 10px;
+  padding: 8px 14px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
   z-index: 10;
-  color: #1a1a1a;
-  font-size: 12px;
+  color: #1e293b;
+  font-size: 13px;
+  font-weight: 500;
   cursor: pointer;
+  transition: all 0.2s;
 }
 
 .year-select:hover {
-  border-color: #3b82f6;
+  border-color: var(--accent-color);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.15);
 }
 </style>
