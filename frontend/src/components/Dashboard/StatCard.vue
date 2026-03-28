@@ -22,27 +22,34 @@ defineProps<Props>()
 .stat-card {
   display: inline-flex;
   align-items: center;
-  margin: 0 12px;
+  margin: 0 10px;
   color: var(--text-primary);
-  padding: 10px 16px;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 12px;
-  border: 1px solid rgba(226, 232, 240, 0.5);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  padding: 14px 20px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 14px;
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.06),
+              0 2px 6px rgba(15, 23, 42, 0.04),
+              0 1px 0 rgba(255, 255, 255, 1) inset;
+  transform: translateY(0);
 }
 
 .stat-card:hover {
-  background: rgba(255, 255, 255, 0.85);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.98);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(59, 130, 246, 0.15),
+              0 6px 16px rgba(15, 23, 42, 0.08),
+              0 1px 0 rgba(255, 255, 255, 1) inset;
+  border-color: rgba(59, 130, 246, 0.3);
 }
 
 .stat-icon {
-  font-size: 1.5rem;
-  margin-right: 10px;
+  font-size: 1.6rem;
+  margin-right: 12px;
+  filter: drop-shadow(0 2px 4px rgba(15, 23, 42, 0.1));
 }
 
 .stat-content {
@@ -51,15 +58,17 @@ defineProps<Props>()
 }
 
 .stat-label {
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   color: var(--text-secondary);
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: 0.01em;
 }
 
 .stat-value {
-  font-size: 1.15rem;
-  font-weight: 700;
+  font-size: 1.25rem;
+  font-weight: 800;
   color: var(--accent-color);
-  line-height: 1.2;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
 }
 </style>

@@ -29,29 +29,32 @@ defineProps<Props>()
 .user-profile {
   display: flex;
   align-items: center;
+  justify-content: center;
   padding: 16px;
   height: 100%;
 }
 
 .avatar {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   object-fit: cover;
-  margin-right: 16px;
-  border: 2px solid var(--border-color);
+  margin-right: 14px;
+  border: 3px solid rgba(59, 130, 246, 0.2);
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.15);
 }
 
 .user-info {
-  flex: 1;
+  flex: 0;
 }
 
 .user-name {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   color: var(--accent-color);
-  font-weight: 600;
+  font-weight: 700;
   margin: 0;
   white-space: nowrap;
+  letter-spacing: -0.02em;
 }
 
 a {
@@ -59,6 +62,6 @@ a {
 }
 
 a:hover .user-name {
-  opacity: 0.8;
+  opacity: 0.85;
 }
 </style>
