@@ -13,32 +13,54 @@
 
 <style scoped>
 .mac-window {
-  background: rgba(255, 255, 255, 0.96);
+  position: relative;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.86)),
+    var(--bg-card);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(226, 232, 240, 0.9);
-  border-radius: 18px;
-  box-shadow: 0 10px 40px rgba(15, 23, 42, 0.1),
-              0 4px 12px rgba(15, 23, 42, 0.06),
-              0 1px 0 rgba(255, 255, 255, 1) inset;
+  border: 1px solid var(--border-color);
+  border-radius: 22px;
+  box-shadow: var(--shadow);
   overflow: hidden;
   height: 100%;
   display: flex;
   flex-direction: column;
-  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
   transform: translateY(0);
 }
 
+.mac-window::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background:
+    linear-gradient(120deg, rgba(255, 255, 255, 0.85), transparent 34%),
+    radial-gradient(circle at 85% 0%, rgba(59, 130, 246, 0.12), transparent 28%);
+  pointer-events: none;
+}
+
+.mac-window::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.58);
+  pointer-events: none;
+}
+
 .mac-window:hover {
-  box-shadow: 0 20px 60px rgba(15, 23, 42, 0.15),
-              0 8px 24px rgba(15, 23, 42, 0.1),
-              0 1px 0 rgba(255, 255, 255, 1) inset;
-  transform: translateY(-4px);
+  border-color: rgba(59, 130, 246, 0.36);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
 }
 
 .window-content {
+  position: relative;
+  z-index: 1;
   flex: 1;
   overflow: auto;
-  padding: 18px;
+  padding: 20px;
 }
 </style>

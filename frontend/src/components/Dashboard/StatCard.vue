@@ -20,55 +20,91 @@ defineProps<Props>()
 
 <style scoped>
 .stat-card {
-  display: inline-flex;
-  align-items: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  min-width: 0;
+  min-height: 68px;
   color: var(--text-primary);
-  padding: 12px 16px;
-  background: rgba(255, 255, 255, 0.9);
+  padding: 10px 11px;
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.76));
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border-radius: 14px;
-  border: 1px solid rgba(226, 232, 240, 0.85);
-  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-  box-shadow: 0 5px 16px rgba(15, 23, 42, 0.05),
-              0 2px 6px rgba(15, 23, 42, 0.03),
-              0 1px 0 rgba(255, 255, 255, 1) inset;
+  border-radius: 16px;
+  border: 1px solid rgba(203, 213, 225, 0.7);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.055),
+              0 1px 0 rgba(255, 255, 255, 0.9) inset;
   transform: translateY(0);
-  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.stat-card::after {
+  content: '';
+  position: absolute;
+  inset: auto 10px 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-secondary), var(--accent-highlight));
+  opacity: 0.6;
 }
 
 .stat-card:hover {
-  background: rgba(255, 255, 255, 0.98);
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 10px 28px rgba(59, 130, 246, 0.12),
-              0 5px 14px rgba(15, 23, 42, 0.06),
-              0 1px 0 rgba(255, 255, 255, 1) inset;
-  border-color: rgba(59, 130, 246, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 34px rgba(30, 64, 175, 0.12),
+              0 5px 14px rgba(15, 23, 42, 0.06);
+  border-color: rgba(59, 130, 246, 0.36);
 }
 
 .stat-icon {
-  font-size: 1.45rem;
-  margin-right: 11px;
-  filter: drop-shadow(0 2px 4px rgba(15, 23, 42, 0.1));
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: inline-flex;
+  width: 24px;
+  height: 24px;
+  margin-right: 0;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  border-radius: 9px;
+  background: linear-gradient(135deg, rgba(30, 64, 175, 0.12), rgba(59, 130, 246, 0.08));
+  color: var(--accent-color);
+  font-size: 0.72rem;
+  font-weight: 800;
+  box-shadow: inset 0 0 0 1px rgba(59, 130, 246, 0.16);
 }
 
 .stat-content {
   display: flex;
   flex-direction: column;
+  gap: 3px;
+  width: 100%;
+  min-width: 0;
 }
 
 .stat-label {
-  font-size: 0.78rem;
+  max-width: calc(100% - 26px);
+  font-size: 0.68rem;
   color: var(--text-secondary);
-  font-weight: 600;
-  letter-spacing: 0.01em;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .stat-value {
-  font-size: 1.15rem;
+  max-width: 100%;
+  font-size: clamp(0.95rem, 0.95vw, 1.12rem);
   font-weight: 800;
   color: var(--accent-color);
   line-height: 1.15;
   letter-spacing: -0.02em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 </style>

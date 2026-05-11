@@ -95,8 +95,9 @@ const handleClear = () => {
 .header-section {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 12px;
+  align-items: flex-start;
+  margin-bottom: 14px;
+  gap: 14px;
 }
 
 .chart-title {
@@ -123,11 +124,21 @@ const handleClear = () => {
   display: flex;
   align-items: center;
   gap: 10px;
+  min-width: 0;
 }
 
 .filter-label {
-  color: var(--text-secondary);
-  font-size: 0.85rem;
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--accent-color);
+  font-size: 0.78rem;
+  font-weight: 700;
+  background: rgba(30, 64, 175, 0.08);
+  border: 1px solid rgba(59, 130, 246, 0.14);
+  border-radius: 999px;
+  padding: 7px 10px;
 }
 
 .clear-btn {
@@ -160,6 +171,9 @@ const handleClear = () => {
 .article-list {
   flex: 1;
   overflow: auto;
+  border: 1px solid rgba(226, 232, 240, 0.72);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.48);
 }
 
 .article-table {
@@ -171,29 +185,35 @@ const handleClear = () => {
 }
 
 .article-table th {
-  padding: 10px 12px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  padding: 12px 14px;
   border-bottom: 2px solid rgba(226, 232, 240, 0.8);
-  background-color: rgba(248, 250, 252, 0.6);
+  background: rgba(248, 250, 252, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: var(--text-secondary);
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
 }
 
 .article-table td {
-  padding: 10px 12px;
+  padding: 12px 14px;
   border-bottom: 1px solid rgba(226, 232, 240, 0.6);
   color: var(--text-primary);
 }
 
 .article-table tr:hover {
-  background-color: rgba(248, 250, 252, 0.8);
+  background: linear-gradient(90deg, rgba(59, 130, 246, 0.08), rgba(255, 255, 255, 0.72));
 }
 
 .article-table a {
   text-decoration: none;
   color: var(--accent-color);
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 700;
   transition: color 0.2s;
 }
 

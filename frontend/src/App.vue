@@ -1,5 +1,8 @@
 <template>
   <div class="dashboard-container">
+    <div class="dashboard-glow dashboard-glow-primary"></div>
+    <div class="dashboard-glow dashboard-glow-accent"></div>
+
     <!-- 顶部：用户信息 + 统计数据（同一个卡片） -->
     <div class="top-section">
       <MacWindow class="top-card">
@@ -11,28 +14,28 @@
     </div>
 
     <div class="charts-container">
-      <div class="chart-row">
-        <MacWindow class="chart-window">
+      <div class="chart-row overview-row">
+        <MacWindow class="chart-window chart-window-quarter">
           <template #default>
             <QuarterlyBarChart :data="quarterData" @chart-click="handleQuarterClick" />
           </template>
         </MacWindow>
 
-        <MacWindow class="chart-window">
+        <MacWindow class="chart-window chart-window-category">
           <template #default>
             <CategoryPieChart :data="categoryData" @chart-click="handleCategoryClick" />
           </template>
         </MacWindow>
 
-        <MacWindow class="chart-window">
+        <MacWindow class="chart-window chart-window-read">
           <template #default>
             <ReadMixChart :data="readData" @chart-click="handleReadClick" />
           </template>
         </MacWindow>
       </div>
 
-      <div class="chart-row">
-        <MacWindow class="chart-window">
+      <div class="chart-row insight-row">
+        <MacWindow class="chart-window chart-window-heatmap">
           <template #default>
             <HeatmapChart
               :data="heatmapData"
@@ -44,7 +47,7 @@
           </template>
         </MacWindow>
 
-        <MacWindow class="chart-window">
+        <MacWindow class="chart-window chart-window-articles">
           <template #default>
             <ArticleList
               :articles="articles"
@@ -226,56 +229,165 @@ const handleClearFilter = async () => {
 
 <style scoped>
 .dashboard-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 100vh;
-  padding: 20px;
-  gap: 20px;
+  padding: 24px;
+  gap: 18px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.dashboard-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(rgba(59, 130, 246, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59, 130, 246, 0.06) 1px, transparent 1px);
+  background-size: 42px 42px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.7), transparent 72%);
+  pointer-events: none;
+}
+
+.dashboard-glow {
+  position: absolute;
+  z-index: -1;
+  width: 38vw;
+  height: 38vw;
+  border-radius: 999px;
+  filter: blur(26px);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.dashboard-glow-primary {
+  top: -24vw;
+  right: -10vw;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.22), transparent 62%);
+}
+
+.dashboard-glow-accent {
+  left: -20vw;
+  bottom: -24vw;
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.16), transparent 64%);
 }
 
 .top-section {
-  height: 12.5vh;
+  height: clamp(126px, 14.5vh, 156px);
   flex-shrink: 0;
   min-height: 0;
 }
 
 .top-content {
   display: flex;
-  gap: 24px;
+  gap: 18px;
   height: 100%;
   align-items: center;
+  position: relative;
 }
 
 .top-content > *:first-child {
-  flex: 0 0 30%;
+  flex: 0 0 27%;
+  min-width: 280px;
 }
 
 .top-content > *:last-child {
   flex: 1;
+  min-width: 0;
 }
 
 .charts-container {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
   min-height: 0;
 }
 
 .chart-row {
-  display: flex;
-  gap: 20px;
+  display: grid;
+  gap: 18px;
+  min-height: 0;
+}
+
+.overview-row {
+  grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr) minmax(0, 1.25fr);
+  flex: 0 0 42%;
+}
+
+.insight-row {
+  grid-template-columns: minmax(0, 1.55fr) minmax(340px, 0.95fr);
   flex: 1;
-  min-height: 40%;
 }
 
 .chart-window {
-  flex: 1;
   min-width: 0;
+  min-height: 0;
+}
+
+.top-card {
+  position: relative;
+}
+
+.top-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 13% 12%, rgba(59, 130, 246, 0.18), transparent 26%),
+    linear-gradient(90deg, rgba(30, 64, 175, 0.08), transparent 58%);
+  pointer-events: none;
 }
 
 :deep(.window-content) {
   height: 100%;
-  padding: 18px;
+  padding: 20px;
+}
+
+@media (max-width: 1280px) {
+  .dashboard-container {
+    height: auto;
+    min-height: 100vh;
+    overflow: auto;
+  }
+
+  .top-section {
+    height: auto;
+  }
+
+  .top-content,
+  .chart-row {
+    grid-template-columns: 1fr;
+  }
+
+  .top-content {
+    display: grid;
+  }
+
+  .top-content > *:first-child {
+    min-width: 0;
+  }
+
+  .overview-row,
+  .insight-row {
+    flex: none;
+  }
+
+  .chart-window {
+    min-height: 360px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 14px;
+  }
+
+  :deep(.window-content) {
+    padding: 16px;
+  }
 }
 </style>
