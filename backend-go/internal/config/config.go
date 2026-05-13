@@ -9,16 +9,26 @@ import (
 
 // Config 保存服务运行所需的全部配置项。
 type Config struct {
-	Host             string
-	Port             int
-	Debug            bool
-	DatabaseURL      string
-	CSDNUserID       string
-	CSDNBlogURL      string
+	// Host 是 HTTP 服务监听地址。
+	Host string
+	// Port 是 HTTP 服务监听端口。
+	Port int
+	// Debug 控制 Gin 是否以调试模式运行。
+	Debug bool
+	// DatabaseURL 保存数据库连接地址，默认使用 SQLite。
+	DatabaseURL string
+	// CSDNUserID 是默认抓取的 CSDN 用户 ID。
+	CSDNUserID string
+	// CSDNBlogURL 是抓取入口页地址。
+	CSDNBlogURL string
+	// SpiderRetryTimes 表示抓取失败后的最大重试次数。
 	SpiderRetryTimes int
+	// SpiderRetryDelay 表示每次重试之间的等待秒数。
 	SpiderRetryDelay int
-	SpiderTimeout    int
-	CORSOrigins      []string
+	// SpiderTimeout 表示单次 HTTP 请求超时时间，单位秒。
+	SpiderTimeout int
+	// CORSOrigins 定义允许访问后端的前端来源列表。
+	CORSOrigins []string
 }
 
 // Load 从当前进程环境变量中加载配置。

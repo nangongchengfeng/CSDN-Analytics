@@ -7,14 +7,16 @@ import (
 
 	"csdn-analytics/backend-go/internal/app"
 	"csdn-analytics/backend-go/internal/config"
+
 	"github.com/joho/godotenv"
 )
 
 // main 是 HTTP 服务的程序入口。
 func main() {
 	_ = godotenv.Load()
-
+	// 加载配置。
 	cfg := config.Load()
+	// 创建 Gin 应用实例。
 	router, err := app.New(cfg)
 	if err != nil {
 		log.Fatal(err)
@@ -22,7 +24,7 @@ func main() {
 
 	addr := fmt.Sprintf("%s:%d", cfg.Host, cfg.Port)
 	log.Printf("starting go backend on %s", addr)
-
+	// 启动 HTTP 服务。
 	if err := router.Run(addr); err != nil {
 		log.Fatal(err)
 	}

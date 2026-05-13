@@ -7,12 +7,17 @@ import (
 	"github.com/spf13/cobra"
 )
 
+// SpiderRunner 定义 CLI 运行抓取任务所需的最小能力集合。
 type SpiderRunner interface {
+	// CrawlInfo 抓取用户信息。
 	CrawlInfo() (bool, error)
+	// CrawlCategorize 抓取分类信息。
 	CrawlCategorize() error
+	// CrawlArticles 抓取文章信息。
 	CrawlArticles() error
 }
 
+// SpiderFactory 根据用户 ID 创建一个可执行抓取的运行器。
 type SpiderFactory func(userID string) SpiderRunner
 
 // NewRootCommand 创建 crawl 根命令并挂载全部子命令。

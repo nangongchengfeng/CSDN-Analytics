@@ -9,24 +9,38 @@ import (
 	dbpkg "csdn-analytics/backend-go/internal/db"
 )
 
+// ArticleRepository 约束文章服务所需的最小仓储能力。
 type ArticleRepository interface {
+	// ListAll 返回全部文章记录。
 	ListAll() ([]dbpkg.Article, error)
 }
 
 // ArticleView 表示附带派生时间字段的文章视图对象。
 type ArticleView struct {
-	ID         uint
-	URL        string
-	Title      string
-	Date       string
-	ReadNum    int64
+	// ID 是文章主键。
+	ID uint
+	// URL 是文章访问地址。
+	URL string
+	// Title 是文章标题。
+	Title string
+	// Date 是原始发布时间字符串。
+	Date string
+	// ReadNum 是阅读量。
+	ReadNum int64
+	// CommentNum 是评论量。
 	CommentNum int64
-	Type       string
-	Weekday    int
-	Year       int
-	Month      int
-	Quarter    string
-	Week       int
+	// Type 是文章分类名称。
+	Type string
+	// Weekday 是按 Python weekday 语义计算的星期值。
+	Weekday int
+	// Year 是发布年份。
+	Year int
+	// Month 是发布月份。
+	Month int
+	// Quarter 是中文季度名称。
+	Quarter string
+	// Week 是 ISO 周序号。
+	Week int
 }
 
 // ArticleListItem 表示文章列表接口返回的精简对象。
@@ -53,6 +67,7 @@ type ReadResult struct {
 
 // ArticleService 负责文章相关的筛选、预处理和聚合统计。
 type ArticleService struct {
+	// repo 提供文章原始数据访问能力。
 	repo ArticleRepository
 }
 

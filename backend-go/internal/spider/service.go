@@ -14,26 +14,38 @@ import (
 	dbpkg "csdn-analytics/backend-go/internal/db"
 )
 
+// InfoRepository 约束抓取服务写入用户信息所需的能力。
 type InfoRepository interface {
+	// Upsert 写入或更新一条用户信息。
 	Upsert(dbpkg.Info) error
 }
 
+// CategorizeRepository 约束抓取服务写入和读取分类信息所需的能力。
 type CategorizeRepository interface {
+	// Upsert 写入或更新一条分类信息。
 	Upsert(dbpkg.Categorize) error
+	// ListAll 返回全部分类信息。
 	ListAll() ([]dbpkg.Categorize, error)
 }
 
+// ArticleRepository 约束抓取服务写入文章信息所需的能力。
 type ArticleRepository interface {
+	// Upsert 写入或更新一条文章记录。
 	Upsert(dbpkg.Article) error
 }
 
 // Service 封装 CSDN 抓取流程及其依赖。
 type Service struct {
-	cfg            config.Config
-	client         *http.Client
-	infoRepo       InfoRepository
+	// cfg 提供抓取相关配置。
+	cfg config.Config
+	// client 是底层 HTTP 请求客户端。
+	client *http.Client
+	// infoRepo 用于写入用户信息。
+	infoRepo InfoRepository
+	// categorizeRepo 用于写入和读取分类信息。
 	categorizeRepo CategorizeRepository
-	articleRepo    ArticleRepository
+	// articleRepo 用于写入文章信息。
+	articleRepo ArticleRepository
 }
 
 // NewService 创建抓取服务实例。

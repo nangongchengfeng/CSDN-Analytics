@@ -12,37 +12,56 @@ import (
 
 // ParsedUserInfo 表示从用户主页中提取出的用户信息结构。
 type ParsedUserInfo struct {
-	Statistics   map[string]string
+	// Statistics 保存原创、粉丝、总访问量等统计文案。
+	Statistics map[string]string
+	// Achievements 保存点赞、评论、收藏、分享等成就数据。
 	Achievements map[string]string
-	CodeAge      string
-	AuthorName   string
-	HeadImg      string
+	// CodeAge 是码龄文本。
+	CodeAge string
+	// AuthorName 是作者名称。
+	AuthorName string
+	// HeadImg 是头像链接。
+	HeadImg string
 }
 
 // ParsedCategory 表示从主页中提取出的专栏分类结构。
 type ParsedCategory struct {
-	Href         string
-	Categorize   string
+	// Href 是分类详情页链接。
+	Href string
+	// Categorize 是分类名称。
+	Categorize string
+	// CategorizeID 是从链接中提取出的分类 ID。
 	CategorizeID string
-	ColumnNum    int
+	// ColumnNum 是入口处展示的文章数。
+	ColumnNum int
 }
 
 // ParsedCategoryDetails 表示分类详情页中的统计结构。
 type ParsedCategoryDetails struct {
+	// SubscribeNum 是订阅人数。
 	SubscribeNum int
-	ArticleNum   int
-	ReadNum      int
-	CollectNum   int
+	// ArticleNum 是文章数量。
+	ArticleNum int
+	// ReadNum 是总阅读量。
+	ReadNum int
+	// CollectNum 是总收藏量。
+	CollectNum int
 }
 
 // ParsedArticle 表示从专栏页面提取出的文章结构。
 type ParsedArticle struct {
-	URL        string
-	Title      string
-	Date       string
-	ReadNum    int
+	// URL 是文章链接。
+	URL string
+	// Title 是文章标题。
+	Title string
+	// Date 是发布时间。
+	Date string
+	// ReadNum 是阅读量。
+	ReadNum int
+	// CommentNum 是评论数。
 	CommentNum int
-	Type       string
+	// Type 是所属分类名称。
+	Type string
 }
 
 // ParseUserInfo 从用户主页 HTML 中提取用户统计信息。

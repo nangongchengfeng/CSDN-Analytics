@@ -28,6 +28,7 @@ func New(cfg config.Config) (*gin.Engine, error) {
 
 // NewSpiderService 创建可供 CLI 复用的抓取服务实例。
 func NewSpiderService(cfg config.Config, userID string) (*spider.Service, error) {
+	// 构建数据库仓储。
 	infoRepo, categorizeRepo, articleRepo, err := buildRepositories(cfg.DatabaseURL)
 	if err != nil {
 		return nil, err

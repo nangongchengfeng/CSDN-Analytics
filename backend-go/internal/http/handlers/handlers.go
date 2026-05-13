@@ -13,21 +13,31 @@ import (
 	"gorm.io/gorm"
 )
 
+// InfoRepository 约束 handler 读取用户信息所需的能力。
 type InfoRepository interface {
+	// First 返回第一条用户信息记录。
 	First() (dbpkg.Info, error)
 }
 
+// CategorizeRepository 约束 handler 读取分类信息所需的能力。
 type CategorizeRepository interface {
+	// ListAll 返回全部分类记录。
 	ListAll() ([]dbpkg.Categorize, error)
 }
 
+// ArticleRepository 约束 handler 读取文章信息所需的能力。
 type ArticleRepository interface {
+	// ListAll 返回全部文章记录。
 	ListAll() ([]dbpkg.Article, error)
 }
 
+// SpiderService 约束 handler 触发抓取任务所需的能力。
 type SpiderService interface {
+	// CrawlInfo 抓取用户信息。
 	CrawlInfo() (bool, error)
+	// CrawlCategorize 抓取分类信息。
 	CrawlCategorize() error
+	// CrawlArticles 抓取文章信息。
 	CrawlArticles() error
 }
 

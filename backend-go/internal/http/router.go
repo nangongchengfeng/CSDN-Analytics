@@ -13,10 +13,14 @@ import (
 
 // Dependencies 收集路由层运行所依赖的仓储与服务。
 type Dependencies struct {
-	InfoRepo       handlers.InfoRepository
+	// InfoRepo 提供用户信息读取能力。
+	InfoRepo handlers.InfoRepository
+	// CategorizeRepo 提供分类信息读取能力。
 	CategorizeRepo handlers.CategorizeRepository
-	ArticleRepo    handlers.ArticleRepository
-	Spider         handlers.SpiderService
+	// ArticleRepo 提供文章信息读取能力。
+	ArticleRepo handlers.ArticleRepository
+	// Spider 提供抓取任务执行能力。
+	Spider handlers.SpiderService
 }
 
 // NewRouter 创建 Gin 路由并注册全部 API。
@@ -26,13 +30,15 @@ func NewRouter(cfg config.Config, deps Dependencies) *gin.Engine {
 	}
 
 	router := gin.New()
+	// 注册 Gin 中间件。
 	router.Use(gin.Logger(), gin.Recovery())
+	// 注册 CORS 中间件。
 	router.Use(cors.New(cors.Config{
 		AllowOrigins: cfg.CORSOrigins,
 		AllowMethods: []string{stdhttp.MethodGet, stdhttp.MethodPost, stdhttp.MethodPut, stdhttp.MethodDelete, stdhttp.MethodOptions},
 		AllowHeaders: []string{"Content-Type", "Authorization"},
 	}))
-
+	// 注册 API 路由。
 	handlerSet := handlers.New(deps.InfoRepo, deps.CategorizeRepo, deps.ArticleRepo, deps.Spider)
 	api := router.Group("/api")
 	{
